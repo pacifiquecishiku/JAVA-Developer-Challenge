@@ -16,7 +16,7 @@ public class RabbitServiceImpl implements IRabbitService {
     }
 
     @Override
-    public void send(String queueName, OperandosDTO operandosDTO) {
-        Object o = rabbitTemplate.convertSendAndReceive(queueName, operandosDTO);
+    public Double send(String queueName, OperandosDTO operandosDTO) {
+        return (Double) rabbitTemplate.convertSendAndReceive(queueName, operandosDTO);
     }
 }

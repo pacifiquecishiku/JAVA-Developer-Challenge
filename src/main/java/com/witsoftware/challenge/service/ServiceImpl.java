@@ -1,6 +1,5 @@
 package com.witsoftware.challenge.service;
 
-import com.witsoftware.challenge.dto.ResponseDTO;
 import dtos.OperandosDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,33 +18,27 @@ public class ServiceImpl implements IService {
     }
 
     @Override
-    //TODO
-//    Fazer as validações antes de enviar a requisição pro Calculator
-    public ResponseDTO sum(OperandosDTO operandos) {
+    public Double sum(OperandosDTO operandos) {
         validaOperandos(operandos);
-        rabbitService.send(SUM_QUEUE, operandos);
-        return null;
+        return rabbitService.send(SUM_QUEUE, operandos);
     }
 
     @Override
-    public ResponseDTO subtraction(OperandosDTO operandos) {
+    public Double subtraction(OperandosDTO operandos) {
         validaOperandos(operandos);
-        rabbitService.send(SUBTRACTION_QUEUE, operandos);
-        return null;
+        return rabbitService.send(SUBTRACTION_QUEUE, operandos);
     }
 
     @Override
-    public ResponseDTO multiplication(OperandosDTO operandos) {
+    public Double multiplication(OperandosDTO operandos) {
         validaOperandos(operandos);
-        rabbitService.send(MULTIPLICATION_QUEUE, operandos);
-        return null;
+        return rabbitService.send(MULTIPLICATION_QUEUE, operandos);
     }
 
     @Override
-    public ResponseDTO division(OperandosDTO operandos) {
+    public Double division(OperandosDTO operandos) {
         validaOperandos(operandos);
-        rabbitService.send(DIVISION_QUEUE, operandos);
-        return null;
+        return rabbitService.send(DIVISION_QUEUE, operandos);
     }
 
     private void validaOperandos(OperandosDTO operandos) {

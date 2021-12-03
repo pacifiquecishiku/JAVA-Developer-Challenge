@@ -19,7 +19,7 @@ public class Controller {
     )
     public ResponseDTO sum(OperandosDTO operandos) {
         try {
-            return service.sum(operandos);
+            return responseWithResult(service.sum(operandos));
         } catch (RuntimeException e) {
             return responseWithError(e);
         }
@@ -31,7 +31,7 @@ public class Controller {
     )
     public ResponseDTO subtract(OperandosDTO operandos) {
         try {
-            return service.subtraction(operandos);
+            return responseWithResult(service.subtraction(operandos));
         } catch (RuntimeException e) {
             return responseWithError(e);
         }
@@ -43,7 +43,7 @@ public class Controller {
     )
     public ResponseDTO multiply(OperandosDTO operandos) {
         try {
-            return service.multiplication(operandos);
+            return responseWithResult(service.multiplication(operandos));
         } catch (RuntimeException e) {
             return responseWithError(e);
         }
@@ -55,7 +55,7 @@ public class Controller {
     )
     public ResponseDTO divide(OperandosDTO operandos) {
         try {
-            return service.division(operandos);
+            return responseWithResult(service.division(operandos));
         } catch (RuntimeException e) {
             return responseWithError(e);
         }
@@ -65,6 +65,12 @@ public class Controller {
         return new ResponseDTO.Builder()
                 .with(true)
                 .with(e.getMessage())
+                .build();
+    }
+
+    private ResponseDTO responseWithResult(Double result) {
+        return new ResponseDTO.Builder()
+                .with(result.doubleValue())
                 .build();
     }
 
