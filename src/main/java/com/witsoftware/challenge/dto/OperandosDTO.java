@@ -1,6 +1,8 @@
 package com.witsoftware.challenge.dto;
 
-public class OperandosDTO {
+import java.io.Serializable;
+
+public class OperandosDTO implements Serializable {
 
     private String a;
     private String b;

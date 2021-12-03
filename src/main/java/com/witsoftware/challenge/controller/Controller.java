@@ -18,7 +18,11 @@ public class Controller {
             params = {"a", "b"}
     )
     public ResponseDTO sum(OperandosDTO operandos) {
-        return service.sum(operandos);
+        try {
+            return service.sum(operandos);
+        } catch (RuntimeException e) {
+            return responseWithError(e);
+        }
     }
 
     @GetMapping(
@@ -26,7 +30,11 @@ public class Controller {
             params = {"a", "b"}
     )
     public ResponseDTO subtract(OperandosDTO operandos) {
-        return service.subtraction(operandos);
+        try {
+            return service.subtraction(operandos);
+        } catch (RuntimeException e) {
+            return responseWithError(e);
+        }
     }
 
     @GetMapping(
@@ -34,7 +42,11 @@ public class Controller {
             params = {"a", "b"}
     )
     public ResponseDTO multiply(OperandosDTO operandos) {
-        return service.multiplication(operandos);
+        try {
+            return service.multiplication(operandos);
+        } catch (RuntimeException e) {
+            return responseWithError(e);
+        }
     }
 
     @GetMapping(
@@ -42,7 +54,18 @@ public class Controller {
             params = {"a", "b"}
     )
     public ResponseDTO divide(OperandosDTO operandos) {
-        return service.division(operandos);
+        try {
+            return service.division(operandos);
+        } catch (RuntimeException e) {
+            return responseWithError(e);
+        }
+    }
+
+    private ResponseDTO responseWithError(RuntimeException e) {
+        return new ResponseDTO.Builder()
+                .with(true)
+                .with(e.getMessage())
+                .build();
     }
 
 }

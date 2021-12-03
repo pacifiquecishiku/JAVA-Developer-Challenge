@@ -11,8 +11,11 @@ import static org.springframework.amqp.core.Binding.DestinationType.QUEUE;
 @Component
 public class RabbitMQConection {
 
-    private static final String DEFAULT_EXCHANGE = "amq.direct";
-    private static final String DEFAULT_QUEUE = "calculatorQueue";
+    public static final String DEFAULT_EXCHANGE = "amq.direct";
+    public static final String SUM_QUEUE = "sum";
+    public static final String SUBTRACTION_QUEUE = "subtraction";
+    public static final String MULTIPLICATION_QUEUE = "multiplication";
+    public static final String DIVISION_QUEUE = "division";
 
     private AmqpAdmin amqpAdmin;
 
@@ -35,11 +38,23 @@ public class RabbitMQConection {
 
     @PostConstruct
     private void create() {
-        Queue queue = queue(DEFAULT_QUEUE);
+        Queue sumQueue = queue(SUM_QUEUE);
+        Queue subQueue = queue(SUBTRACTION_QUEUE);
+        Queue multQueue = queue(MULTIPLICATION_QUEUE);
+        Queue divQueue = queue(DIVISION_QUEUE);
+
         Exchange exchange = directExchange(DEFAULT_EXCHANGE);
-        Binding binding = binding(queue, exchange);
-        amqpAdmin.declareQueue(queue);
+
+        amqpAdmin.declareQueue(sumQueue);
+        amqpAdmin.declareQueue(subQueue);
+        amqpAdmin.declareQueue(multQueue);
+        amqpAdmin.declareQueue(divQueue);
+
         amqpAdmin.declareExchange(exchange);
-        amqpAdmin.declareBinding(binding);
+
+        amqpAdmin.declareBinding(binding(sumQueue, exchange));
+        amqpAdmin.declareBinding(binding(subQueue, exchange));
+        amqpAdmin.declareBinding(binding(multQueue, exchange));
+        amqpAdmin.declareBinding(binding(divQueue, exchange));
     }
 }
