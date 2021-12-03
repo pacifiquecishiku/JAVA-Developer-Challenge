@@ -6,16 +6,11 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+import static consts.RabbitMQ.*;
 import static org.springframework.amqp.core.Binding.DestinationType.QUEUE;
 
 @Component
 public class RabbitMQConection {
-
-    public static final String DEFAULT_EXCHANGE = "amq.direct";
-    public static final String SUM_QUEUE = "sum";
-    public static final String SUBTRACTION_QUEUE = "subtraction";
-    public static final String MULTIPLICATION_QUEUE = "multiplication";
-    public static final String DIVISION_QUEUE = "division";
 
     private AmqpAdmin amqpAdmin;
 

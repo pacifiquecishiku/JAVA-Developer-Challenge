@@ -1,8 +1,8 @@
 package com.witsoftware.challenge.controller;
 
-import com.witsoftware.challenge.dto.OperandosDTO;
 import com.witsoftware.challenge.dto.ResponseDTO;
 import com.witsoftware.challenge.service.IService;
+import dtos.OperandosDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

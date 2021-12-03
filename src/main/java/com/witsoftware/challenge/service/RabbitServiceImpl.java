@@ -1,6 +1,6 @@
 package com.witsoftware.challenge.service;
 
-import com.witsoftware.challenge.dto.OperandosDTO;
+import dtos.OperandosDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +17,6 @@ public class RabbitServiceImpl implements IRabbitService {
 
     @Override
     public void send(String queueName, OperandosDTO operandosDTO) {
-        rabbitTemplate.convertAndSend(queueName, operandosDTO);
+        Object o = rabbitTemplate.convertSendAndReceive(queueName, operandosDTO);
     }
 }

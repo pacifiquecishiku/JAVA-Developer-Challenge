@@ -1,11 +1,11 @@
 package com.witsoftware.challenge.service;
 
-import com.witsoftware.challenge.dto.OperandosDTO;
 import com.witsoftware.challenge.dto.ResponseDTO;
+import dtos.OperandosDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.witsoftware.challenge.conections.RabbitMQConection.*;
+import static consts.RabbitMQ.*;
 import static java.lang.String.format;
 
 @Service

@@ -1,7 +1,7 @@
 package com.witsoftware.challenge.service;
 
-import com.witsoftware.challenge.dto.OperandosDTO;
 import com.witsoftware.challenge.dto.ResponseDTO;
+import dtos.OperandosDTO;
 
 public interface IService {
     ResponseDTO sum(OperandosDTO operandos);
