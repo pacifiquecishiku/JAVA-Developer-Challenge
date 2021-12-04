@@ -12,7 +12,7 @@ public class DefaultTemplate extends RabbitTemplate {
     @Autowired
     public DefaultTemplate(ConnectionFactory connectionFactory) {
         super(connectionFactory);
-        setReplyTimeout(10000);
+        setReplyTimeout(2000);
     }
 
     @Override

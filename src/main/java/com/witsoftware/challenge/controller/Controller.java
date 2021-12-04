@@ -33,7 +33,7 @@ public class Controller {
         try {
             return responseWithResult(service.sum(operandos));
         } catch (RuntimeException e) {
-            makeErrorLog(e);
+            makeWarnLog(e);
             return responseWithError(e);
         }
     }
@@ -47,7 +47,7 @@ public class Controller {
         try {
             return responseWithResult(service.subtraction(operandos));
         } catch (RuntimeException e) {
-            makeErrorLog(e);
+            makeWarnLog(e);
             return responseWithError(e);
         }
     }
@@ -61,7 +61,7 @@ public class Controller {
         try {
             return responseWithResult(service.multiplication(operandos));
         } catch (RuntimeException e) {
-            makeErrorLog(e);
+            makeWarnLog(e);
             return responseWithError(e);
         }
     }
@@ -75,7 +75,7 @@ public class Controller {
         try {
             return responseWithResult(service.division(operandos));
         } catch (RuntimeException e) {
-            makeErrorLog(e);
+            makeWarnLog(e);
             return responseWithError(e);
         }
     }
@@ -97,7 +97,7 @@ public class Controller {
         LOGGER.info(format("Endpoint: \'%s\' Operandos: a=%s b=%s", path, operandos.getA(), operandos.getB()));
     }
 
-    private void makeErrorLog(RuntimeException e) {
-        LOGGER.error("Não foi possível realizar a operação solicitada!", e);
+    private void makeWarnLog(RuntimeException e) {
+        LOGGER.warn("Não foi possível realizar a operação solicitada!", e);
     }
 }
