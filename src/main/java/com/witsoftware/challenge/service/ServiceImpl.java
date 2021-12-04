@@ -47,7 +47,7 @@ public class ServiceImpl implements IService {
             a = Double.valueOf(operandos.getA());
             Double.valueOf(operandos.getB());
         } catch (NumberFormatException exception) {
-            String message = "Não foi possível converter o valor : %s";
+            String message = "Não é possível operar com o valor : %s";
             if (a == null) {
                 throw new NumberFormatException(format(message, operandos.getA()));
             }
